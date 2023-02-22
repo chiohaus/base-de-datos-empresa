@@ -1,0 +1,231 @@
+create database empresa;
+
+Create table departamento(
+numerod int not null primary key,
+nombred varchar (50) not null,
+nssgted int not null,
+fechainicgte date not null);
+
+create table empleado (
+nss int not null primary key,
+nombre varchar(50) not null,
+apellidos varchar(50) not null,
+fechan date not null,
+direccion varchar(50) not null,
+sexo char not null,
+salario float not null,
+nsssuper int,
+numd int not null);
+
+alter table empleado
+add foreign key (numd)
+references depatamento (numerod);
+
+Create table proyecto(
+numerop int not null primary key,	
+nombrep varchar(50) not null,		
+lugarp varchar (50) not null,	
+numd int not null);
+
+alter table proyecto
+add foreign key (numd)
+references depatamento (numerod);
+
+Create table lugares_deptos(		
+numerod int not null,
+lugard varchar(50) not null,
+primary key (numerod, lugard));
+
+alter table lugares_deptos
+add foreign key (numerod)
+references departamento (numerod);
+
+Create table dependiente(
+nsse int not null,
+nombre_dependiente varchar(50) not null,
+sexo char,
+fechan date not null,
+parentesco varchar(50) not null,
+primary key (nsse, nombre_dependiente));
+
+alter table dependiente
+add foreign key (nsse) references empleado (nss);
+
+Create table trabaja_en(
+nsse int not null,
+nump int not null,
+horas float not null,
+primary key (nsse, nump));
+
+alter table trabaja_en
+add foreign key (nsse) references empleado(nss);
+
+alter table trabaja_en
+add foreign key (nump) references empleado(numerop);
+
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("José", "Silva B", 123456789, "1955-01-09", "Fresnos 731, Higueras, MX", "M", 30000, 333445555, 5);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Federico", "Vizcarra T", 333445555, "1945-12-08", "Valle 638, Higueras, MX", "M", 40000, 888665555, 5);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Alicia", "Zapata J", 999887777, "1958-07-19", "Castillo 3321, Sucre, MX", "F", 25000, 987654321, 4);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Jazmín", "Valdés S", 987654321, "1931-06-20", "Bravo 291, Belén, MX", "F", 43000, 888665555, 4);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Ramón", "Nieto K", 666884444, "1952-08-15", "Espiga 875, Heras, MX", "M", 38000, 333445555, 5);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Josefa", "Esparza A", 453453453,"1962-06-31", "Rosas 5631, Higueras, MX", "F", 25000, 333445555, 5);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Ahmed", "Jabbar V", 987987987, "1959-03-29", "Dalias 980, Higueras, MX", "M", 25000, 987654321, 4);
+
+insert into empleado (nombre, apellidos, nss, fechan, direccion, sexo, salario, nsssuper,numd)
+values ("Jaime", "Botello E", 888665555, "1927-11-10", "Sorgo 450, Higueras, MX", "M", 55000, null, 1);
+
+
+insert into departamento (nombred, numerod, nssgted, fechainicgte)
+values ("Investigación", 5, 333445555, "1978-03-22");
+
+insert into departamento (nombred, numerod, nssgted, fechainicgte)
+values ("Administración", 4, 987654321, "1985-01-01");
+
+insert into departamento (nombred, numerod, nssgted, fechainicgte)
+values ("Dirección", 1, 888665555, "1971-06-19");
+
+
+
+
+insert into proyecto(nombrep, numerop, lugarp, numd)
+values("ProductoX", 1, "Belén", 5); 
+
+insert into proyecto(nombrep, numerop, lugarp, numd)
+values("ProductoY", 2, "Sacramento", 5);
+
+insert into proyecto(nombrep, numerop, lugarp, numd)
+values("ProductoZ", 3, "Higueras", 5);
+
+insert into proyecto(nombrep, numerop, lugarp, numd)
+values("Automatización", 10, "Santiago", 4); 
+
+insert into proyecto(nombrep, numerop, lugarp, numd)
+values("Reorganización", 20, "Higueras", 1); 
+
+insert into proyecto(nombrep, numerop, lugarp, numd)
+values("Nuevasprestaciones", 30, "Santiago", 4);
+
+
+
+insert into lugares_deptos(numerod, lugard)
+values(1, "Higueras");
+
+insert into lugares_deptos(numerod, lugard)
+values(4, "Santiago");
+
+insert into lugares_deptos(numerod, lugard)
+values(5, "Belén");
+
+insert into lugares_deptos(numerod, lugard)
+values(5, "Sacramento");
+
+insert into lugares_deptos(numerod, lugard)
+values(5, "Higeras");
+
+insert into trabaja_en (nsse, nump, horas)
+values(123456789, 1, 32.5);
+
+insert into trabaja_en (nsse, nump, horas)
+values(123456789, 2, 7.5 );
+
+insert into trabaja_en (nsse, nump, horas)
+values(666884444, 3, 40.0 );
+
+insert into trabaja_en (nsse, nump, horas)
+values(453453453, 1, 20.0 );
+
+insert into trabaja_en (nsse, nump, horas)
+values(453453453, 2, 20.0 );
+
+insert into trabaja_en (nsse, nump, horas)
+values(333445555, 2, 10.0 );
+
+insert into trabaja_en (nsse, nump, horas)
+values(333445555, 3, 10.0 );
+
+insert into trabaja_en (nsse, nump, horas)
+values(333445555, 10, 10.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(333445555, 20, 10.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(999887777, 30, 30.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(999887777, 10, 10.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(987987987, 10, 35.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(987987987, 30, 5.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(987654321, 30, 20.0);
+
+insert into trabaja_en (nsse, nump, horas)
+values(987654321, 20, 15.0);
+
+insert into trabaja_en (nsse, nump)
+values(888665555, 20);
+
+
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(333445555, "Alicia", "F", "1976-04-05", "HIJA");
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(333445555, "Teodoro", "M", "1973-10-25", "HIJO");
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(333445555, "Jobita", "F", "1948-05-03", "CONYUGE");
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(987654321, "Abdiel", "M", "1932-02-20", "CONYUGE");
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(123456789, "Miguel", "M", "1978-01-01", "HIJO");
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(123456789, "Alicia", "F", "1978-12-31", "HIJA");
+
+insert into dependiente (nsse,nombre_dependiente, sexo, fechan, parentesco)
+values(123456789, "Elizabeth", "F", "1957-05-05", "CONYUGE");
+
+
+select * from departamento
+where numd=5;
+
+select nombre_dependiente, sexo, parentesco
+from dependiente;
+
+select* from empleado
+where sexo = "M";
+
+select nombre, apellidos
+from empleado
+where numd=4;
+
+select* from departamento;
+
+select*from empleado;
+
+select e.nombre, e.apellidos, d.nombred
+from empleado e join departamento d
+on e.nss=d.nssgted;
+
